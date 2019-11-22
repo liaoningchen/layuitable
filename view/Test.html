@@ -13,7 +13,10 @@
 <body>
 
 <table class="layui-hide" id="demo" lay-filter="test"></table>
-
+<script type="text/html" id="excel">
+    <button type="button" lay-submit="" class="layui-btn layui-btn-warm" onclick="exportCellSingle()" style="float: right">
+        <i class="layui-icon"></i>导出Excel</button>
+</script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -23,6 +26,7 @@
 
 <script src="../plugins/layui/layui.js"></script>
 <script src="../plugins/js/jquery-1.11.3.js"></script>
+<script src="../plugins/layui/layui_exts/excel.js"></script>
 <script src="../plugins/js/test.js"></script>
 <script>
     layui.config({
@@ -43,12 +47,13 @@
             ,title: '用户表'
             ,method:'post'
             ,page: true //开启分页
-            ,toolbar: '#barDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
-            ,defaultToolbar: ['exports', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+            ,toolbar: '#excel' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            /*,defaultToolbar: ['exports', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                 title: '提示'
                 ,layEvent: 'LAYTABLE_TIPS'
                 ,icon: 'layui-icon-login-wechat'
-            }]
+            }]*/
+            ,defaultToolbar:[]
             ,initSort: {field:'deviceNumber', type:'desc'} //初始化排序
             ,cols: [
                 [{
